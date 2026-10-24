@@ -1,0 +1,11 @@
+"use strict";
+const input=document.getElementById("bruteInput");
+const results=document.getElementById("results");
+const empty=document.getElementById("empty");
+const feedback=document.getElementById("feedback");
+const resultCount=document.getElementById("resultCount");
+function reportHeight(){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight},"*")}
+function notify(message,error){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight,toast:message,error:!!error},"*")}
+function transform(text,shift){const s=((Number(shift)%26)+26)%26;return Array.from(text).map(ch=>{const c=ch.charCodeAt(0);if(c>=65&&c<=90)return String.fromCharCode((c-65+s)%26+65);if(c>=97&&c<=122)return String.fromCharCode((c-97+s)%26+97);return ch}).join("")}
+document.getElementById("runBtn").addEventListener("click",()=>{results.replaceChildren();if(!input.value.length){empty.classList.remove("hidden");resultCount.textContent="0 / 25";feedback.textContent="Enter an encrypted message first.";feedback.classList.add("error");reportHeight();return}empty.classList.add("hidden");feedback.textContent="";feedback.classList.remove("error");for(let shift=1;shift<=25;shift++){const card=document.createElement("article");card.className="candidate";const top=document.createElement("div");top.className="candidate-top";const key=document.createElement("span");key.className="candidate-key";key.textContent="KEY "+String(shift).padStart(2,"0")+" · SHIFT "+shift;const use=document.createElement("button");use.className="use-btn";use.type="button";use.textContent="Copy result ↗";const candidate=document.createElement("span");candidate.className="candidate-text";candidate.textContent=transform(input.value,-shift);use.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(candidate.textContent);notify("Candidate copied to clipboard.")}catch(e){notify("Candidate: "+candidate.textContent)} });top.append(key,use);card.append(top,candidate);results.appendChild(card)}resultCount.textContent="25 / 25";notify("Generated all 25 Caesar key possibilities.");reportHeight()});
+if(window.ResizeObserver)new ResizeObserver(reportHeight).observe(document.body);reportHeight();
