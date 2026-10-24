@@ -1,5 +1,5 @@
 "use strict";
-const store=parent!==window&&parent.SecurityStore?parent.SecurityStore:{outbox:[]};
+let store;try{store=parent!==window&&parent.SecurityStore?parent.SecurityStore:null}catch(e){store=null}if(!store)store=window.__secureTaskStore||(window.__secureTaskStore={outbox:[]});
 const messageInput=document.getElementById("messageInput"),secretInput=document.getElementById("secretInput"),algorithmInput=document.getElementById("macAlgorithm"),tagOutput=document.getElementById("tagOutput"),feedback=document.getElementById("feedback"),sendBtn=document.getElementById("sendBtn");
 let currentPreview=null;
 function reportHeight(){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight},"*")}
