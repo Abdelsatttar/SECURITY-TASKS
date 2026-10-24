@@ -1,5 +1,5 @@
 "use strict";
-window.SecurityStore = {
+window.SecurityStore = window.SecurityStore || {
   otpKeys: Object.create(null),
   users: Object.create(null),
   outbox: []
