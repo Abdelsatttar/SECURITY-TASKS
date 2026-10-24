@@ -1,6 +1,6 @@
 "use strict";
 const input=document.getElementById("plainInput"),cipherOut=document.getElementById("cipherOutput"),plainOut=document.getElementById("plainOutput"),feedback=document.getElementById("feedback");
-const store=parent!==window&&parent.SecurityStore?parent.SecurityStore:{otpKeys:Object.create(null)};
+let store;try{store=parent!==window&&parent.SecurityStore?parent.SecurityStore:null}catch(e){store=null}if(!store)store=window.__secureTaskStore||(window.__secureTaskStore={otpKeys:Object.create(null)});
 let latestKeyId="";
 function reportHeight(){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight},"*")}
 function notify(message,error){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight,toast:message,error:!!error},"*")}

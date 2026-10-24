@@ -1,5 +1,5 @@
 "use strict";
-const store=parent!==window&&parent.SecurityStore?parent.SecurityStore:{users:Object.create(null)};
+let store;try{store=parent!==window&&parent.SecurityStore?parent.SecurityStore:null}catch(e){store=null}if(!store)store=window.__secureTaskStore||(window.__secureTaskStore={users:Object.create(null)});
 let revealHashes=false;
 function reportHeight(){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight},"*")}
 function notify(message,error){parent.postMessage({type:"securelab-resize",height:document.documentElement.scrollHeight,toast:message,error:!!error},"*")}

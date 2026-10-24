@@ -54,7 +54,23 @@ document.getElementById("exploreBtn").addEventListener("click", function () {
 });
 
 frame.addEventListener("load", function () {
-  try { frame.contentWindow.postMessage({ type: "securelab-parent-ready" }, location.origin); } catch (error) {}
+  // Size the iframe from the rendered task document so controls and result
+  // panels are not clipped before the task's ResizeObserver reports back.
+  try {
+    const doc = frame.contentDocument;
+    if (doc && doc.documentElement) {
+      const height = Math.max(
+        doc.documentElement.scrollHeight || 0,
+        doc.body ? doc.body.scrollHeight : 0
+      );
+      if (height > 0) frame.style.height = Math.max(380, Math.min(2600, height + 12)) + "px";
+    }
+  } catch (error) {
+    // Cross-origin/local-file previews still use the postMessage resize path.
+  }
+  try {
+    frame.contentWindow.postMessage({ type: "securelab-parent-ready" }, "*");
+  } catch (error) {}
 });
 
 window.addEventListener("message", function (event) {

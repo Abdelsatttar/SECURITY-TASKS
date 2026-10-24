@@ -4,7 +4,7 @@ A frontend-only Computer Security coursework toolkit. The root page is the singl
 
 ## Run it
 
-Open `index.html` in a browser, or enable GitHub Pages for this repository and serve the root folder. Web Crypto functions (SHA family, PBKDF2, secure random bytes, and HMAC) require a secure context such as HTTPS or localhost.
+Run the project from a local static server (recommended) or publish it with GitHub Pages. Opening the HTML file through GitHub's `blob`/source view will not execute the application. On Windows, open a terminal in this repository folder and run `py -m http.server 5500`, then browse to `http://localhost:5500`. This serves static files only; it does not add a backend or database. Web Crypto functions (SHA family, PBKDF2, secure random bytes, and HMAC) require a secure context such as HTTPS or localhost.
 
 ## File structure
 
