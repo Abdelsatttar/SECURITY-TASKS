@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d19">
+  <meta name="description" content="Six interactive Computer Security labs in one workspace.">
+  <title>SecureLab — Computer Security Toolkit</title>
+  <link rel="stylesheet" href="style.css">
+  <script>window.SecurityStore = window.SecurityStore || { otpKeys: Object.create(null), users: Object.create(null), outbox: [] };</script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="background-glow glow-a"></div><div class="background-glow glow-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SecureLab home">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 20 6v5.7c0 4.5-3.1 7.7-8 9.3-4.9-1.6-8-4.8-8-9.3V6l8-3Z" stroke="currentColor" stroke-width="1.7"/><path d="m8.5 12.2 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="brand-text"><strong>Secure<span>Lab</span></strong><small>COMPUTER SECURITY TOOLKIT</small></span>
+    </a>
+    <div class="topbar-right"><span class="demo-pill"><i></i> FRONTEND DEMO</span><a href="https://github.com/Abdelsatttar/SECURITY-TASKS" target="_blank" rel="noreferrer">Repository ↗</a></div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> LEARN · EXPERIMENT · UNDERSTAND</div>
+        <h1>Computer Security<br><em>Toolkit.</em></h1>
+        <p>Six hands-on labs for classical encryption, hashes, one-time pads, password verification, and message authentication — all organized in one workspace.</p>
+        <div class="hero-actions"><a href="#labs" class="primary-button" id="exploreBtn">Explore the labs <b>↓</b></a><span class="run-note"><span class="tiny-lock">⌑</span> Runs in your browser</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="core-shield"><svg viewBox="0 0 64 64" fill="none"><path d="M32 6 52 14v14c0 13.5-8.5 23-20 29C20.5 51 12 41.5 12 28V14L32 6Z" stroke="currentColor" stroke-width="2"/><path d="m23 31 6 6 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="float-chip chip-a"><b class="chip-symbol purple">#</b> Hashing</span><span class="float-chip chip-b"><b class="chip-symbol cyan">↔</b> Encryption</span><span class="float-chip chip-c"><b class="chip-symbol green">✓</b> Integrity</span>
+      </div>
+      <div class="stats">
+        <div><strong>06</strong><span>INTERACTIVE LABS</span></div><div><strong>05</strong><span>HASH ALGORITHMS</span></div><div><strong>00</strong><span>BACKEND SERVICES</span></div><div class="stats-note"><i></i> Sample data stays in page memory</div>
+      </div>
+    </section>
+
+    <section class="workspace" id="labs">
+      <aside class="sidebar">
+        <div class="side-heading">YOUR WORKSPACE <span>06 TASKS</span></div>
+        <button class="nav-item active" type="button" data-task="1"><span class="nav-no">01</span><span><strong>Caesar Cipher</strong><small>Encrypt & decrypt</small></span><b>↗</b></button>
+        <button class="nav-item" type="button" data-task="2"><span class="nav-no">02</span><span><strong>Brute Force</strong><small>Try all 25 shifts</small></span><b>↗</b></button>
+        <button class="nav-item" type="button" data-task="3"><span class="nav-no">03</span><span><strong>Hash Generator</strong><small>MD5 & SHA family</small></span><b>↗</b></button>
+        <button class="nav-item" type="button" data-task="4"><span class="nav-no">04</span><span><strong>One-Time Pad</strong><small>Random-key cipher</small></span><b>↗</b></button>
+        <button class="nav-item" type="button" data-task="5"><span class="nav-no">05</span><span><strong>Password Vault</strong><small>Hash & verify login</small></span><b>↗</b></button>
+        <button class="nav-item" type="button" data-task="6"><span class="nav-no">06</span><span><strong>Message MAC</strong><small>Preview before send</small></span><b>↗</b></button>
+        <div class="sidebar-note"><span>i</span><p><strong>Learning mode</strong><br>Tasks run locally. Data is temporary and clears when you refresh.</p></div>
+      </aside>
+
+      <section class="content-panel">
+        <div class="content-heading"><div><div class="eyebrow"><span></span> SECURITY PLAYGROUND</div><h2 id="currentTitle">Caesar Cipher</h2><p id="currentDescription">Shift letters in a message to encrypt or decrypt it.</p></div><span class="task-counter" id="taskCounter">TASK 01 <i></i></span></div>
+        <div class="frame-wrap" id="frameWrap"><iframe id="taskFrame" title="Selected Computer Security task" src="task-1.html" loading="eager"></iframe></div>
+        <div class="content-bottom"><span><i></i> CLIENT-SIDE ONLY</span><span>Use the sidebar to switch labs without leaving this workspace.</span></div>
+      </section>
+    </section>
+
+    <footer class="footer"><a class="footer-brand" href="#">Secure<span>Lab</span></a><p>Built for coursework and experimentation. Not a production security system.</p><a href="#labs">Back to labs ↑</a></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

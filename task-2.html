@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Task 02 — Caesar Brute Force</title><link rel="stylesheet" href="task-2.css"><script src="task-2.js" defer></script></head>
+<body><main class="lab">
+  <header class="lab-head"><div class="lab-icon cyan">⌕</div><div><div class="kicker">TASK 02 <span>CRYPTOANALYSIS</span></div><h1>Caesar Brute Force</h1><p>The key is unknown. Generate all 25 possible shifts and inspect each candidate to find the readable plaintext.</p></div><div class="head-no">02</div></header>
+  <div class="field"><div class="label-line"><label for="bruteInput">Encrypted message</label><span class="hint">Key unknown</span></div><textarea id="bruteInput" rows="3" placeholder="Paste a Caesar-encrypted message here..." spellcheck="false"></textarea></div>
+  <div class="actions"><button class="btn primary" id="runBtn" type="button">Generate 25 possibilities <b>→</b></button><span class="hint">SHIFT KEYS 1–25</span></div>
+  <div class="result-heading"><span class="dot"></span> DECRYPTION CANDIDATES <span class="result-count" id="resultCount">0 / 25</span></div>
+  <div class="empty" id="empty"><span class="empty-icon">⌕</span><span>Enter an encrypted message to see every possible decryption.</span></div>
+  <div id="results" class="candidate-grid" aria-live="polite"></div>
+  <p class="feedback" id="feedback" aria-live="polite"></p>
+  <div class="info-note"><span>i</span><p><strong>Remember</strong><br>A Caesar cipher has only 26 shifts including the unchanged alphabet. Testing shifts 1–25 covers every meaningful alternate key; the correct plaintext should look readable.</p></div>
+</main></body></html>

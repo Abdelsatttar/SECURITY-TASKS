@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Task 04 — One-Time Pad</title><link rel="stylesheet" href="task-4.css"><script src="task-4.js" defer></script></head>
+<body><main class="lab">
+  <header class="lab-head"><div class="lab-icon orange">✳</div><div><div class="kicker">TASK 04 <span>SYMMETRIC ENCRYPTION</span></div><h1>One-Time Pad</h1><p>Generate a cryptographically random key, encrypt your plaintext, then decrypt using the key ID from this page session.</p></div><div class="head-no">04</div></header>
+  <div class="notice"><span>i</span><p><strong>Frontend-only key storage</strong><br>The key is kept in a shared in-memory JavaScript object, not on a server. Switching tasks keeps it available; refreshing the page clears it.</p></div>
+  <div class="field"><div class="label-line"><label for="plainInput">Plaintext message</label><span class="hint" id="charCount">0 characters</span></div><textarea id="plainInput" rows="4" placeholder="Write the message you want to encrypt..." spellcheck="false"></textarea></div>
+  <button class="btn primary full" id="encryptBtn" type="button">Generate key &amp; encrypt <b>→</b></button>
+  <section class="result"><div class="result-title"><span class="dot orange-dot"></span> CIPHERTEXT · BASE64 <button class="copy" data-copy="cipherOutput" type="button">Copy ciphertext</button></div><output id="cipherOutput" class="output placeholder">Encrypted data will appear here.</output><div class="key-row"><span class="hint">STORED KEY ID</span><code id="keyId">Not generated yet</code><button id="useLatestBtn" type="button" class="copy" disabled>Use for decrypt</button></div></section>
+  <p class="feedback" id="feedback" aria-live="polite"></p>
+  <div class="divider"></div>
+  <div class="subheading"><span>02</span><div><h2>Decrypt a ciphertext</h2><p>Use a key ID created during this page session.</p></div></div>
+  <div class="field"><label for="decryptKeyId">Key ID</label><input id="decryptKeyId" placeholder="e.g. otp-a1b2c3d4" autocomplete="off"></div>
+  <div class="field"><div class="label-line"><label for="cipherInput">Ciphertext (Base64)</label><span class="hint">Paste ciphertext or use latest result</span></div><textarea id="cipherInput" rows="3" placeholder="Paste ciphertext here..."></textarea></div>
+  <button class="btn secondary" id="decryptBtn" type="button">Decrypt with stored key <b>↶</b></button>
+  <section class="result result-plain"><div class="result-title"><span class="dot green-dot"></span> DECRYPTED PLAINTEXT <button class="copy" data-copy="plainOutput" type="button">Copy text</button></div><output id="plainOutput" class="output placeholder">Decrypted text will appear here.</output></section>
+</main></body></html>

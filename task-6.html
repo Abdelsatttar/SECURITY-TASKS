@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Task 06 — Message MAC</title><link rel="stylesheet" href="task-6.css"><script src="task-6.js" defer></script></head>
+<body><main class="lab">
+  <header class="lab-head"><div class="lab-icon pink">✉</div><div><div class="kicker">TASK 06 <span>MESSAGE INTEGRITY</span></div><h1>Message MAC</h1><p>Generate an HMAC authentication tag and preview it before sending the message to this workspace's demo outbox.</p></div><div class="head-no">06</div></header>
+  <div class="notice"><span>i</span><p><strong>Local demo only</strong><br>The message is not sent over a network. Messages and tags are stored in a shared in-memory array. The secret key is never saved with the outbox record.</p></div>
+  <div class="field"><div class="label-line"><label for="messageInput">Message to send</label><span class="hint" id="charCount">0 characters</span></div><textarea id="messageInput" rows="4" placeholder="Write the message before generating its authentication tag..." spellcheck="false"></textarea></div>
+  <div class="controls"><div class="field algorithm"><label for="macAlgorithm">MAC algorithm</label><select id="macAlgorithm"><option value="SHA-256" selected>HMAC-SHA-256 · 256-bit</option><option value="SHA-512">HMAC-SHA-512 · 512-bit</option></select></div><div class="field secret"><label for="secretInput">Shared secret key</label><input id="secretInput" type="password" autocomplete="off" placeholder="Enter a shared secret key"></div></div>
+  <button class="btn primary full" id="previewBtn" type="button">Generate &amp; preview tag <b>→</b></button>
+  <section class="result"><div class="result-title"><span class="dot"></span> MESSAGE AUTHENTICATION TAG <button class="copy" id="copyBtn" type="button">Copy tag</button></div><output id="tagOutput" class="output placeholder">Your HMAC tag will appear here.</output><div class="meta"><span>ALGORITHM <strong id="metaAlgorithm">HMAC-SHA-256</strong></span><span>TAG SIZE <strong id="metaBits">256 bits</strong></span><span>STATE <strong id="metaState">Not generated</strong></span></div></section>
+  <p class="feedback" id="feedback" aria-live="polite"></p>
+  <button class="btn send full" id="sendBtn" type="button" disabled><b>➤</b> Send message with tag</button>
+  <div class="outbox-head"><div><h2>Demo outbox</h2><p>Every message below is paired with the MAC tag that was previewed before sending.</p></div><span class="outbox-count" id="outboxCount">0 sent</span></div>
+  <div class="outbox" id="outbox"><div class="empty"><span>↗</span><p>Nothing sent yet. Generate a tag, review it, then send your message.</p></div></div>
+</main></body></html>
